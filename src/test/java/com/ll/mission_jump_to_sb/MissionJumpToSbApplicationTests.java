@@ -1,5 +1,7 @@
 package com.ll.mission_jump_to_sb;
 
+import com.ll.mission_jump_to_sb.QuestionRepository;
+import com.ll.mission_jump_to_sb.answer.AnswerRepository;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

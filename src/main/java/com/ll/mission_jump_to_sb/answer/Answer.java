@@ -1,5 +1,6 @@
-package com.ll.mission_jump_to_sb;
+package com.ll.mission_jump_to_sb.answer;
 
+import com.ll.mission_jump_to_sb.question.Question;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

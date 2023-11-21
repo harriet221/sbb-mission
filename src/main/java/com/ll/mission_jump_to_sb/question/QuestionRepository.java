@@ -1,4 +1,4 @@
-package com.ll.mission_jump_to_sb;
+package com.ll.mission_jump_to_sb.question;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
