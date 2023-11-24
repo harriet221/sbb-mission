@@ -21,7 +21,7 @@ public class QuestionController {
         return "question_list";
     }
 
-    @GetMapping(value="/detail/{id}")
+    @GetMapping(value = "/detail/{id}")
     public String detail(Model model, @PathVariable("id") Integer id) {
         Question question = this.questionService.getQuestion(id);
         model.addAttribute("question", question);
@@ -35,8 +35,7 @@ public class QuestionController {
 
     @PostMapping("/create")
     public String questionCreate(@RequestParam String subject, @RequestParam String content) {
-        // TODO: 질문을 저장한다.
+        this.questionService.create(subject, content);
         return "redirect:/question/list";
-        // 질문 저장한 후 질문 목록으로 이동하기
     }
 }
