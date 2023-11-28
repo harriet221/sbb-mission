@@ -26,8 +26,11 @@ public class SecurityConfig {
                 new AntPathRequestMatcher("/h2-console/**"))
         ).headers((headers) -> headers.addHeaderWriter(
                 new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN))
-        ).formLogin((formLogin) -> formLogin.loginPage("/user/login").defaultSuccessUrl("/")
-        );
+        ).formLogin((formLogin) -> formLogin.loginPage("/user/login").defaultSuccessUrl("/"))
+                .logout((logout) -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
+                        .logoutSuccessUrl("/")
+                        .invalidateHttpSession(true)
+                );
 
         return http.build();
     }
