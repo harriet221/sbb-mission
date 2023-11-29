@@ -17,7 +17,7 @@ class MissionJumpToSbApplicationTests {
            String subject = String.format("테스트 데이터:[%03d]", i);
            // 17 -> 017
            String content = "내용 없음";
-           this.questionService.create(subject, content);
+           this.questionService.create(subject, content, null);
        }
     }
 
