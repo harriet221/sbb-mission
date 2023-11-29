@@ -1,6 +1,7 @@
 package com.ll.mission_jump_to_sb.answer;
 
 import com.ll.mission_jump_to_sb.question.Question;
+import com.ll.mission_jump_to_sb.user.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,4 +25,7 @@ public class Answer {
 
     @ManyToOne
     private Question question;
+
+    @ManyToOne
+    private SiteUser author;
 }
