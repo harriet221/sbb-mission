@@ -48,18 +48,31 @@ public class AnswerController {
     }
 
     @PreAuthorize("isAuthenticated()")
+    @GetMapping("/modify/{id}")
+    public String answerModify(AnswerForm answerForm,
+                               @PathVariable("id") Integer id,
+                               Principal principal) {
+
+        Answer answer = this.answerService.getAnswer(id);
+        if(!answer.getAuthor().getUsername().equals(principal.getName())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정 권한이 없습니다.");
+        }
+        answerForm.setContent(answer.getContent());
+        return "answer_form";
+    }
+
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/modify/{id}")
     public String answerModify(@Valid AnswerForm answerForm,
                                BindingResult bindingResult,
                                @PathVariable("id") Integer id,
                                Principal principal) {
 
-        if(bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             return "answer_form";
         }
-
         Answer answer = this.answerService.getAnswer(id);
-        if(!answer.getAuthor().getUsername().equals(principal.getName())) {
+        if (!answer.getAuthor().getUsername().equals(principal.getName())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정 권한이 없습니다.");
         }
         this.answerService.modify(answer, answerForm.getContent());
